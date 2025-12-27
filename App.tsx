@@ -12,13 +12,17 @@ import AIInsightSection from './components/AIInsightSection';
 import ServicesPage from './components/ServicesPage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import { Locale, translations } from './constants/translations';
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentView, setCurrentView] = useState<'home' | 'services' | 'about' | 'contact'>('home');
+  const [locale, setLocale] = useState<Locale>('en');
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const t = translations[locale];
 
   // Scroll to top when view changes
   useEffect(() => {
@@ -26,38 +30,40 @@ const App: React.FC = () => {
   }, [currentView]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <Navbar 
         onCtaClick={openModal} 
         currentView={currentView} 
         onNavigate={(view) => setCurrentView(view)} 
+        locale={locale}
+        setLocale={setLocale}
       />
       
       <main className="flex-grow">
         {currentView === 'home' && (
           <>
-            <Hero onCtaClick={openModal} />
-            <SocialProof />
-            <Features />
-            <ProductPillars />
-            <AIInsightSection />
-            <CTASection onCtaClick={openModal} />
+            <Hero onCtaClick={openModal} t={t} />
+            <SocialProof t={t} />
+            <Features t={t} />
+            <ProductPillars t={t} />
+            <AIInsightSection locale={locale} />
+            <CTASection onCtaClick={openModal} t={t} />
           </>
         )}
         {currentView === 'services' && (
-          <ServicesPage onCtaClick={openModal} />
+          <ServicesPage onCtaClick={openModal} t={t} />
         )}
         {currentView === 'about' && (
-          <AboutPage />
+          <AboutPage t={t} />
         )}
         {currentView === 'contact' && (
-          <ContactPage />
+          <ContactPage t={t} />
         )}
       </main>
       
-      <Footer />
+      <Footer t={t} />
       
-      {isModalOpen && <RecoveryModal onClose={closeModal} />}
+      {isModalOpen && <RecoveryModal onClose={closeModal} locale={locale} />}
     </div>
   );
 };

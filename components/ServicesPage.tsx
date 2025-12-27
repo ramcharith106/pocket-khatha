@@ -1,11 +1,13 @@
 
 import React from 'react';
 
+// Fix error: Property 't' does not exist on type 'IntrinsicAttributes & ServicesPageProps'.
 interface ServicesPageProps {
   onCtaClick: () => void;
+  t: any;
 }
 
-const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick }) => {
+const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
   const steps = [
     {
       title: 'Digital Nudge',

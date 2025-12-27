@@ -1,7 +1,12 @@
 
 import React from 'react';
 
-const Footer: React.FC = () => {
+// Fix error: Property 't' does not exist on type 'IntrinsicAttributes'.
+interface FooterProps {
+  t: any;
+}
+
+const Footer: React.FC<FooterProps> = ({ t }) => {
   return (
     <footer className="bg-brand-dark text-white/60 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

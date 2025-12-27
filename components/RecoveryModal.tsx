@@ -1,11 +1,14 @@
 
 import React, { useState } from 'react';
+import { Locale } from '../constants/translations';
 
+// Fix error: Property 'locale' does not exist on type 'IntrinsicAttributes & RecoveryModalProps'.
 interface RecoveryModalProps {
   onClose: () => void;
+  locale: Locale;
 }
 
-const RecoveryModal: React.FC<RecoveryModalProps> = ({ onClose }) => {
+const RecoveryModal: React.FC<RecoveryModalProps> = ({ onClose, locale }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

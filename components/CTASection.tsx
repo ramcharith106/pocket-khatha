@@ -1,11 +1,13 @@
 
 import React from 'react';
 
+// Fix error: Property 't' does not exist on type 'IntrinsicAttributes & CTASectionProps'.
 interface CTASectionProps {
   onCtaClick: () => void;
+  t: any;
 }
 
-const CTASection: React.FC<CTASectionProps> = ({ onCtaClick }) => {
+const CTASection: React.FC<CTASectionProps> = ({ onCtaClick, t }) => {
   return (
     <section className="py-20 bg-brand-red">
       <div className="max-w-4xl mx-auto px-4 text-center">

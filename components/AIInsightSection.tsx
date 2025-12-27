@@ -1,8 +1,14 @@
 
 import React, { useState } from 'react';
 import { GoogleGenAI } from "@google/genai";
+import { Locale } from '../constants/translations';
 
-const AIInsightSection: React.FC = () => {
+// Fix error: Type '{ locale: Locale; }' is not assignable to type 'IntrinsicAttributes'.
+interface AIInsightSectionProps {
+  locale: Locale;
+}
+
+const AIInsightSection: React.FC<AIInsightSectionProps> = ({ locale }) => {
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
@@ -13,17 +19,20 @@ const AIInsightSection: React.FC = () => {
     setResponse('');
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      // Fix: Always use new GoogleGenAI({ apiKey: process.env.API_KEY }) as per guidelines.
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const prompt = `Act as a senior debt recovery specialist for small Indian retailers. 
       The user asks: "${query}". 
       Give a concise, professional, and actionable tip in 2-3 sentences. 
-      Focus on Hyderabad retail context. Use terms like 'Kirana' and 'Bazaar'.`;
+      Focus on Hyderabad retail context. Use terms like 'Kirana' and 'Bazaar'.
+      The current user language preference is ${locale}.`;
       
       const result = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: prompt,
       });
 
+      // Fix: Access response.text directly (it is a getter, not a method).
       setResponse(result.text || 'Unable to generate insight at this time.');
     } catch (error) {
       console.error(error);

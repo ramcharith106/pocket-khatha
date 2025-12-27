@@ -1,7 +1,12 @@
 
 import React from 'react';
 
-const AboutPage: React.FC = () => {
+// Fix error: Property 't' does not exist on type 'IntrinsicAttributes'.
+interface AboutPageProps {
+  t: any;
+}
+
+const AboutPage: React.FC<AboutPageProps> = ({ t }) => {
   return (
     <div className="pt-16">
       {/* Hero Section - Updated to match screenshot with visibility fixes */}
@@ -12,10 +17,10 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-5xl sm:text-7xl font-extrabold text-brand-brown mb-4 leading-tight tracking-tight">
-              Built in Hyderabad,
+              {t.aboutHero1}
             </h1>
             <h1 className="text-5xl sm:text-7xl font-extrabold text-brand-gold mb-8 leading-tight tracking-tight">
-              For Hyderabad.
+              {t.aboutHero2}
             </h1>
             <p className="text-xl sm:text-2xl text-slate-500 max-w-2xl leading-relaxed font-medium">
               Bridging the gap between traditional Kirana values and modern credit security. We are on a mission to professionalize debt recovery for the local merchant.

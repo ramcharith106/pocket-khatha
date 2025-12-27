@@ -1,7 +1,12 @@
 
 import React, { useState } from 'react';
 
-const ContactPage: React.FC = () => {
+// Fix error: Property 't' does not exist on type 'IntrinsicAttributes'.
+interface ContactPageProps {
+  t: any;
+}
+
+const ContactPage: React.FC<ContactPageProps> = ({ t }) => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -19,10 +24,10 @@ const ContactPage: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-5xl sm:text-7xl font-extrabold text-brand-brown mb-2 tracking-tight">
-            Let’s Get Your
+            {t.contactHero1}
           </h1>
           <h1 className="text-5xl sm:text-7xl font-extrabold text-brand-gold mb-8 tracking-tight">
-            Money Back.
+            {t.contactHero2}
           </h1>
           <p className="max-w-2xl mx-auto text-xl sm:text-2xl text-slate-500 leading-relaxed font-medium">
             Whether you need a digital nudge or an on-ground recovery agent, we are here to help your shop grow.
