@@ -12,11 +12,13 @@ import AIInsightSection from './components/AIInsightSection';
 import ServicesPage from './components/ServicesPage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsPage from './components/TermsPage';
 import { Locale, translations } from './constants/translations';
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'home' | 'services' | 'about' | 'contact'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'services' | 'about' | 'contact' | 'privacy' | 'terms'>('home');
   const [locale, setLocale] = useState<Locale>('en');
 
   const openModal = () => setIsModalOpen(true);
@@ -33,8 +35,8 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col font-sans">
       <Navbar 
         onCtaClick={openModal} 
-        currentView={currentView} 
-        onNavigate={(view) => setCurrentView(view)} 
+        currentView={currentView as any} 
+        onNavigate={(view) => setCurrentView(view as any)} 
         locale={locale}
         setLocale={setLocale}
       />
@@ -43,7 +45,6 @@ const App: React.FC = () => {
         {currentView === 'home' && (
           <>
             <Hero onCtaClick={openModal} t={t} />
-            {/* Fix: Capitalized SocialProof to match React component naming conventions */}
             <SocialProof t={t} />
             <Features t={t} />
             <ProductPillars t={t} />
@@ -60,9 +61,15 @@ const App: React.FC = () => {
         {currentView === 'contact' && (
           <ContactPage t={t} />
         )}
+        {currentView === 'privacy' && (
+          <PrivacyPolicy t={t} />
+        )}
+        {currentView === 'terms' && (
+          <TermsPage t={t} />
+        )}
       </main>
       
-      <Footer t={t} />
+      <Footer t={t} onNavigate={(view) => setCurrentView(view as any)} />
       
       {isModalOpen && <RecoveryModal onClose={closeModal} t={t} locale={locale} />}
     </div>
