@@ -1,7 +1,12 @@
 
 import React from 'react';
 
-const Logo: React.FC<{ className?: string }> = ({ className = "h-10" }) => (
+interface LogoProps {
+  className?: string;
+  textColor?: string;
+}
+
+const Logo: React.FC<LogoProps> = ({ className = "h-10", textColor = "text-brand-red" }) => (
   <div className={`flex items-center space-x-3 ${className}`}>
     <div className="relative w-12 h-12 flex-shrink-0">
       {/* The Red Pocket Base */}
@@ -14,7 +19,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "h-10" }) => (
       </svg>
     </div>
     <div className="flex flex-col leading-none">
-      <span className="text-2xl font-extrabold tracking-tight text-brand-red">Pocket Khata</span>
+      <span className={`text-2xl font-extrabold tracking-tight ${textColor}`}>Pocket Khata</span>
     </div>
   </div>
 );

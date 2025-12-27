@@ -43,10 +43,11 @@ const App: React.FC = () => {
         {currentView === 'home' && (
           <>
             <Hero onCtaClick={openModal} t={t} />
+            {/* Fix: Capitalized SocialProof to match React component naming conventions */}
             <SocialProof t={t} />
             <Features t={t} />
             <ProductPillars t={t} />
-            <AIInsightSection locale={locale} />
+            <AIInsightSection locale={locale} t={t} />
             <CTASection onCtaClick={openModal} t={t} />
           </>
         )}
@@ -63,7 +64,7 @@ const App: React.FC = () => {
       
       <Footer t={t} />
       
-      {isModalOpen && <RecoveryModal onClose={closeModal} locale={locale} />}
+      {isModalOpen && <RecoveryModal onClose={closeModal} t={t} locale={locale} />}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 
 import React from 'react';
 
-// Fix error: Property 't' does not exist on type 'IntrinsicAttributes & CTASectionProps'.
 interface CTASectionProps {
   onCtaClick: () => void;
   t: any;
@@ -12,16 +11,16 @@ const CTASection: React.FC<CTASectionProps> = ({ onCtaClick, t }) => {
     <section className="py-20 bg-brand-red">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-8">
-          Ready to clear your books?
+          {t.ctaTitle}
         </h2>
         <p className="text-xl text-brand-cream/80 mb-10">
-          Join hundreds of Hyderabad merchants who have recovered over ₹50 Lakhs using Pocket Khata.
+          {t.ctaDesc}
         </p>
         <button 
           onClick={onCtaClick}
-          className="px-10 py-5 bg-brand-gold text-brand-dark text-xl font-extrabold rounded-2xl shadow-2xl hover:bg-white transition-all transform hover:-translate-y-1 active:scale-95"
+          className="px-10 py-5 bg-brand-gold text-brand-brown text-xl font-extrabold rounded-2xl shadow-2xl hover:bg-white transition-all transform hover:-translate-y-1 active:scale-95"
         >
-          Request Your Recovery Agent Now
+          {t.ctaBtn}
         </button>
       </div>
     </section>
