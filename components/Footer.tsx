@@ -35,8 +35,8 @@ const Footer: React.FC<FooterProps> = ({ t, onNavigate }) => {
             <h4 className="text-brand-gold font-bold mb-6 uppercase tracking-wider text-sm">{t.footerContact}</h4>
             <ul className="space-y-4 text-sm text-brand-cream font-medium">
               <li>T-Hub Phase 2, Knowledge City, Hyderabad</li>
-              <li>+91 90000 XXXXX</li>
-              <li>support@pocketkhata.in</li>
+              <li>+91 9032910399</li>
+              <li>allurucharith@gmail.com</li>
             </ul>
           </div>
         </div>
