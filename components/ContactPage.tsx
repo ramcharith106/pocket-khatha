@@ -11,17 +11,20 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="pt-16">
-      {/* Hero Section */}
-      <section className="bg-brand-dark py-24 sm:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-red rounded-full blur-[120px]"></div>
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-gold rounded-full blur-[120px]"></div>
-        </div>
+      {/* Hero Section - Updated for visibility and to match screenshot theme */}
+      <section className="relative bg-brand-cream/20 py-24 sm:py-32 overflow-hidden">
+        {/* Background Graphic - Peach circles from screenshot */}
+        <div className="absolute top-0 right-[-5%] w-[500px] h-[500px] bg-brand-peach/50 rounded-full blur-[90px] pointer-events-none"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-brand-gold/10 rounded-full blur-[80px] pointer-events-none"></div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Let’s Get Your <span className="text-brand-gold">Money Back.</span>
+          <h1 className="text-5xl sm:text-7xl font-extrabold text-brand-brown mb-2 tracking-tight">
+            Let’s Get Your
           </h1>
-          <p className="max-w-2xl mx-auto text-xl text-brand-cream/80 leading-relaxed">
+          <h1 className="text-5xl sm:text-7xl font-extrabold text-brand-gold mb-8 tracking-tight">
+            Money Back.
+          </h1>
+          <p className="max-w-2xl mx-auto text-xl sm:text-2xl text-slate-500 leading-relaxed font-medium">
             Whether you need a digital nudge or an on-ground recovery agent, we are here to help your shop grow.
           </p>
         </div>
@@ -35,7 +38,7 @@ const ContactPage: React.FC = () => {
             {/* Left Column: Info */}
             <div className="space-y-12">
               <div>
-                <h2 className="text-3xl font-extrabold text-brand-dark mb-8">Get In Touch</h2>
+                <h2 className="text-3xl font-extrabold text-brand-brown mb-8">Get In Touch</h2>
                 <p className="text-lg text-slate-600 leading-relaxed">
                   Our regional headquarters are located in the heart of Hyderabad's tech ecosystem. Drop by for a discussion about your business cash flow.
                 </p>
@@ -50,7 +53,7 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-brand-dark">Office Address</h4>
+                    <h4 className="text-lg font-bold text-brand-brown">Office Address</h4>
                     <p className="text-slate-600 mt-1">
                       T-Hub Phase 2, Knowledge City,<br />
                       Hyderabad, Telangana - 500081
@@ -65,7 +68,7 @@ const ContactPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-brand-dark">Email Us</h4>
+                    <h4 className="text-lg font-bold text-brand-brown">Email Us</h4>
                     <p className="text-slate-600 mt-1">partnerships@pocketkhata.in</p>
                   </div>
                 </div>
@@ -74,10 +77,15 @@ const ContactPage: React.FC = () => {
 
             {/* Right Column: Form */}
             <div className="relative">
-              <div className="bg-white rounded-3xl shadow-2xl border border-brand-cream p-8 sm:p-10 relative z-10">
+              <div className="bg-white rounded-3xl shadow-2xl border border-brand-peach/30 p-8 sm:p-10 relative z-10">
                 {submitted ? (
                   <div className="py-12 text-center">
-                    <h3 className="text-2xl font-bold text-green-600 mb-2">Request Sent!</h3>
+                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Request Sent!</h3>
                     <p className="text-slate-600">Our partnership team will call you back shortly.</p>
                   </div>
                 ) : (
@@ -85,20 +93,23 @@ const ContactPage: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-bold text-slate-700 mb-2">Shop Name</label>
-                        <input required type="text" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red outline-none bg-slate-50 transition-all" placeholder="e.g. Mahavir Sweets" />
+                        <input required type="text" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red outline-none bg-slate-50 transition-all font-medium" placeholder="e.g. Mahavir Sweets" />
                       </div>
                       <div>
                         <label className="block text-sm font-bold text-slate-700 mb-2">Owner Name</label>
-                        <input required type="text" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red outline-none bg-slate-50 transition-all" placeholder="e.g. Anil Kumar" />
+                        <input required type="text" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red outline-none bg-slate-50 transition-all font-medium" placeholder="e.g. Anil Kumar" />
                       </div>
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                      <input required type="tel" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red outline-none bg-slate-50 transition-all" placeholder="+91 9XXXX XXXXX" />
+                      <input required type="tel" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-red outline-none bg-slate-50 transition-all font-medium" placeholder="+91 9XXXX XXXXX" />
                     </div>
-                    <button type="submit" className="w-full py-5 bg-brand-red text-white font-bold rounded-xl shadow-xl hover:bg-brand-dark transition-all transform active:scale-[0.98]">
+                    <button type="submit" className="w-full py-5 bg-brand-red text-white font-bold rounded-xl shadow-xl hover:bg-brand-darkRed transition-all transform active:scale-[0.98]">
                       Request Call Back
                     </button>
+                    <p className="text-center text-xs text-slate-400">
+                      Standard callback time is within 30 minutes.
+                    </p>
                   </form>
                 )}
               </div>
