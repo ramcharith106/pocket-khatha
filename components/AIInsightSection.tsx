@@ -20,10 +20,10 @@ const AIInsightSection: React.FC<AIInsightSectionProps> = ({ locale, t }) => {
 
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const prompt = `Act as a senior debt recovery specialist for small Indian retailers. 
-      The user asks: "${query}". 
-      Give a concise, professional, and actionable tip in 2-3 sentences. 
-      Focus on Hyderabad retail context. Use terms like 'Kirana' and 'Bazaar'.
+      const prompt = `Act as a senior debt recovery specialist for Pocket Khata — a recovery infrastructure platform for India's informal kirana economy.
+      The user asks: "${query}".
+      Give a concise, professional, and actionable tip in 2-3 sentences.
+      Focus on Hyderabad retail context. Use terms like 'Khata', 'Udhaar', 'Kirana', and 'Sharma ji' naturally.
       The current user language preference is ${locale}. Please respond in ${locale}.`;
       
       const result = await ai.models.generateContent({
@@ -83,14 +83,14 @@ const AIInsightSection: React.FC<AIInsightSectionProps> = ({ locale, t }) => {
             <div className="absolute -inset-4 bg-brand-gold/20 rounded-full blur-3xl"></div>
             <div className="relative bg-white p-8 rounded-3xl shadow-2xl border border-brand-peach/30">
               <div className="flex justify-between items-center mb-6">
-                <h4 className="font-bold text-brand-brown">Live Recovery Dashboard</h4>
+                <h4 className="font-bold text-brand-brown">Live Khata Graph</h4>
                 <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold uppercase tracking-tight">System Healthy</span>
               </div>
               <div className="space-y-4">
                 {[
-                  { name: "Sri Sai Kirana", area: "Kukatpally", status: "In Progress", color: "red" },
-                  { name: "Metro General", area: "Madhapur", status: "Recovered", color: "green" },
-                  { name: "Balaji Store", area: "Gachibowli", status: "Agent Assigned", color: "amber" },
+                  { name: "Sharma Kirana", area: "Kukatpally", status: "Agent Dispatched", color: "red" },
+                  { name: "Mehta Medical", area: "Madhapur", status: "Recovered", color: "green" },
+                  { name: "Patel Vegetables", area: "Gachibowli", status: "Nudge Sent", color: "amber" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-transparent hover:border-brand-peach/20 transition-all">
                     <div>

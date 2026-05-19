@@ -115,7 +115,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
                 <p className="mt-4 text-slate-500 font-medium">{t.servBasicDesc}</p>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
-                {['Digital Ledger (Khata)', 'Unlimited Customers', 'Manual WhatsApp Reminders', 'Daily Reports'].map((item, i) => (
+                {['Digital Khata (Face-Based)', 'Unlimited Customers', 'Silent WhatsApp Receipts', 'Daily Summary Reports'].map((item, i) => (
                   <li key={i} className="flex items-center text-slate-700 font-medium">
                     <svg className="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -142,7 +142,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
                 <p className="mt-4 text-white/90 font-medium">{t.servRecoveryDesc}</p>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
-                {['Professional Field Agents', 'AI Risk Prediction', 'Legal Authorization Slips', 'No Recovery No Fee'].map((item, i) => (
+                {['Verified Local Agents', 'Khata Graph Debt Netting', 'Notarised Mediation Consent', 'No Recovery, No Fee'].map((item, i) => (
                   <li key={i} className="flex items-center font-medium">
                     <svg className="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
