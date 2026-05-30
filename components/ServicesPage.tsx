@@ -13,8 +13,8 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
       badge: 'Free',
       description: t.servStep1Desc,
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
     },
@@ -23,8 +23,8 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
       badge: 'Free',
       description: t.servStep2Desc,
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       )
     },
@@ -33,9 +33,9 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
       badge: 'Premium',
       description: t.servStep3Desc,
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       )
     },
@@ -44,114 +44,103 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onCtaClick, t }) => {
       badge: 'Direct',
       description: t.servStep4Desc,
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
     }
   ];
 
   return (
-    <div className="pt-24 pb-20">
-      <section className="bg-brand-cream/20 py-20 border-b border-brand-peach/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-brand-brown mb-6">{t.servTitle}</h1>
-          <p className="max-w-2xl mx-auto text-lg text-slate-600 leading-relaxed font-medium">
+    <div className="pt-20">
+      <section className="bg-brand-peach/15 border-b border-ink-100 py-20 lg:py-24">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-brand-brown mb-5 tracking-[-0.02em]" style={{ textWrap: 'balance' as any }}>{t.servTitle}</h1>
+          <p className="max-w-2xl mx-auto text-lg text-ink-500 leading-relaxed" style={{ textWrap: 'pretty' as any }}>
             {t.servSub}
           </p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-base font-bold text-brand-red tracking-wide uppercase">{t.servWorkflow}</h2>
-            <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-brand-brown">{t.servWorkflowSub}</p>
+      <section className="py-24 lg:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="mb-16 max-w-2xl">
+            <span className="text-[11px] font-semibold uppercase tracking-label text-brand-red">{t.servWorkflow}</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-brand-brown tracking-[-0.01em]">{t.servWorkflowSub}</h2>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-slate-100 -translate-x-1/2 hidden sm:block"></div>
-            <div className="space-y-12">
-              {steps.map((step, idx) => (
-                <div key={idx} className={`relative flex flex-col sm:flex-row items-center ${idx % 2 === 0 ? 'sm:flex-row-reverse' : ''}`}>
-                  <div className="absolute left-8 sm:left-1/2 w-8 h-8 rounded-full bg-brand-red border-4 border-white shadow-lg -translate-x-1/2 z-10"></div>
-                  <div className="w-full sm:w-1/2 px-12 pb-4 sm:pb-0">
-                    <div className="p-8 bg-brand-peach/10 rounded-2xl border border-brand-peach/30 hover:shadow-xl transition-all">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="p-3 bg-brand-red/10 text-brand-red rounded-lg">
-                          {step.icon}
-                        </div>
-                        <span className={`text-xs font-bold uppercase px-2 py-1 rounded-md ${step.badge === 'Free' ? 'bg-green-100 text-green-700' : 'bg-brand-red/10 text-brand-red'}`}>
-                          {step.badge}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-brand-brown mb-2">{idx + 1}. {step.title}</h3>
-                      <p className="text-slate-600 leading-relaxed font-medium">{step.description}</p>
-                    </div>
-                  </div>
-                  <div className="hidden sm:block w-1/2"></div>
+          <ol className="relative border-l border-ink-100 ml-3 space-y-12">
+            {steps.map((step, idx) => (
+              <li key={idx} className="relative pl-10">
+                <span className="absolute -left-[9px] top-1 w-[18px] h-[18px] rounded-full bg-white border-2 border-brand-red"></span>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-brand-red">{step.icon}</span>
+                  <span className="text-[11px] font-medium tnum text-ink-300">0{idx + 1}</span>
+                  <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded ${step.badge === 'Premium' ? 'bg-brand-red/10 text-brand-red' : 'bg-emerald-50 text-emerald-700'}`}>
+                    {step.badge}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
+                <h3 className="text-lg font-semibold text-brand-brown mb-1.5">{step.title}</h3>
+                <p className="text-[15px] text-ink-500 leading-relaxed max-w-xl" style={{ textWrap: 'pretty' as any }}>{step.description}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section className="py-24 bg-brand-cream/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-base font-bold text-brand-red tracking-wide uppercase">{t.servPriceTitle}</h2>
-            <p className="mt-2 text-3xl sm:text-4xl font-extrabold text-brand-brown">{t.servPriceSub}</p>
+      <section className="py-24 lg:py-28 bg-brand-cream">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="mb-16 text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-label text-brand-red">{t.servPriceTitle}</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-brand-brown tracking-[-0.01em]">{t.servPriceSub}</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-10 rounded-3xl border border-brand-peach/30 shadow-sm flex flex-col">
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-brand-brown mb-2">{t.servBasic}</h3>
-                <div className="flex items-baseline">
-                  <span className="text-4xl font-extrabold text-brand-brown">₹0</span>
-                  <span className="text-slate-500 ml-2">/month</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
+            <div className="bg-white p-9 rounded-2xl border border-ink-100 shadow-soft flex flex-col">
+              <div className="min-h-[150px]">
+                <h3 className="text-lg font-semibold text-brand-brown mb-3">{t.servBasic}</h3>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-semibold text-brand-brown tnum">₹0</span>
+                  <span className="text-ink-500 text-[15px]">/month</span>
                 </div>
-                <p className="mt-4 text-slate-500 font-medium">{t.servBasicDesc}</p>
+                <p className="mt-4 text-[15px] text-ink-500 leading-relaxed">{t.servBasicDesc}</p>
               </div>
-              <ul className="space-y-4 mb-10 flex-grow">
-                {['Digital Ledger (Khata)', 'Unlimited Customers', 'Manual WhatsApp Reminders', 'Daily Reports'].map((item, i) => (
-                  <li key={i} className="flex items-center text-slate-700 font-medium">
-                    <svg className="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <ul className="space-y-3 my-8 flex-grow border-t border-ink-100 pt-6">
+                {['Digital ledger (Khata)', 'Unlimited customers', 'Manual WhatsApp reminders', 'Daily reports'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-[15px] text-ink-700">
+                    <svg className="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {item}
                   </li>
                 ))}
               </ul>
-              <button onClick={onCtaClick} className="w-full py-4 bg-slate-100 text-brand-brown font-bold rounded-xl hover:bg-brand-peach/30 transition-colors">
+              <button onClick={onCtaClick} className="w-full py-3.5 bg-brand-cream text-brand-brown font-medium rounded-xl border border-ink-100 hover:bg-brand-peach/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40">
                 {t.servBasicBtn}
               </button>
             </div>
 
-            <div className="relative bg-brand-red p-10 rounded-3xl border-4 border-brand-gold shadow-2xl flex flex-col text-white transform md:scale-105 z-10">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-gold rounded-full text-brand-brown text-sm font-bold uppercase tracking-wider">
-                Risk Free
-              </div>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2">{t.servRecovery}</h3>
-                <div className="flex items-baseline">
-                  <span className="text-4xl font-extrabold text-white">10-15%</span>
-                  <span className="text-brand-gold ml-2 font-bold">{t.servSuccessFee}</span>
+            <div className="relative bg-brand-red p-9 rounded-2xl shadow-lift flex flex-col text-white">
+              <span className="absolute top-9 right-9 text-[10px] font-semibold uppercase tracking-label text-brand-gold">Risk free</span>
+              <div className="min-h-[150px]">
+                <h3 className="text-lg font-semibold mb-3">{t.servRecovery}</h3>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-semibold text-white tnum">10–15%</span>
+                  <span className="text-brand-gold ml-1 text-[15px] font-medium">{t.servSuccessFee}</span>
                 </div>
-                <p className="mt-4 text-white/90 font-medium">{t.servRecoveryDesc}</p>
+                <p className="mt-4 text-[15px] text-white/85 leading-relaxed">{t.servRecoveryDesc}</p>
               </div>
-              <ul className="space-y-4 mb-10 flex-grow">
-                {['Professional Field Agents', 'AI Risk Prediction', 'Legal Authorization Slips', 'No Recovery No Fee'].map((item, i) => (
-                  <li key={i} className="flex items-center font-medium">
-                    <svg className="w-5 h-5 text-brand-gold mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <ul className="space-y-3 my-8 flex-grow border-t border-white/15 pt-6">
+                {['Professional field agents', 'AI risk prediction', 'Legal authorization slips', 'No recovery, no fee'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-[15px] text-white/95">
+                    <svg className="w-4 h-4 text-brand-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {item}
                   </li>
                 ))}
               </ul>
-              <button onClick={onCtaClick} className="w-full py-4 bg-white text-brand-red font-bold rounded-xl hover:bg-brand-cream transition-all shadow-lg">
+              <button onClick={onCtaClick} className="w-full py-3.5 bg-brand-gold text-brand-brown font-semibold rounded-xl hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-red">
                 {t.servRecoveryBtn}
               </button>
             </div>

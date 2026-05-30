@@ -41,7 +41,7 @@ const App: React.FC = () => {
         setLocale={setLocale}
       />
       
-      <main className="flex-grow">
+      <main id="main" className="flex-grow">
         {currentView === 'home' && (
           <>
             <Hero onCtaClick={openModal} t={t} />
