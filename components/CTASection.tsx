@@ -8,17 +8,17 @@ interface CTASectionProps {
 
 const CTASection: React.FC<CTASectionProps> = ({ onCtaClick, t }) => {
   return (
-    <section className="py-20 bg-brand-red">
-      <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-8">
+    <section className="bg-brand-red">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 py-24 lg:py-28 text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight tracking-[-0.01em] mb-5" style={{ textWrap: 'balance' as any }}>
           {t.ctaTitle}
         </h2>
-        <p className="text-xl text-brand-cream/80 mb-10">
+        <p className="text-lg text-brand-cream/85 mb-10 max-w-xl mx-auto leading-relaxed" style={{ textWrap: 'pretty' as any }}>
           {t.ctaDesc}
         </p>
-        <button 
+        <button
           onClick={onCtaClick}
-          className="px-10 py-5 bg-brand-gold text-brand-brown text-xl font-extrabold rounded-2xl shadow-2xl hover:bg-white transition-all transform hover:-translate-y-1 active:scale-95"
+          className="px-8 py-4 bg-brand-gold text-brand-brown text-base font-semibold rounded-xl shadow-lift hover:bg-white hover:-translate-y-0.5 active:translate-y-0 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-red"
         >
           {t.ctaBtn}
         </button>

@@ -5,10 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pocket Khata | Debt Recovery & Digital Ledger</title>
+    <meta name="description" content="A digital ledger and trained field agents that help Hyderabad kirana stores recover what's owed, without the awkward phone calls." />
+    <meta property="og:title" content="Pocket Khata — recover what's owed to you" />
+    <meta property="og:description" content="A digital ledger and field agents for small retailers in Hyderabad." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23C9302B'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23F7B92C' font-size='62' font-family='Georgia,serif' font-weight='700'%3E%E2%82%B9%3C/text%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -21,30 +26,61 @@
                 cream: '#FEF9F0',
                 peach: '#FCE7DB',
                 brown: '#4A0E0C',
+              },
+              // Warm neutral family — tinted toward the brown/cream palette
+              // so grays never read cool/blue next to the warm brand colors.
+              ink: {
+                900: '#2B1A17',
+                700: '#5C4A45',
+                500: '#8A7770',
+                300: '#C9BCB6',
+                100: '#EFE7E1',
               }
             },
             fontFamily: {
-              sans: ['Inter', 'Noto Sans Telugu', 'Noto Sans Devanagari', 'sans-serif'],
+              sans: ['Outfit', 'Noto Sans Telugu', 'Noto Sans Devanagari', 'sans-serif'],
+            },
+            boxShadow: {
+              // Tinted shadows that carry the brown palette hue instead of pure black.
+              soft: '0 1px 2px rgba(74,14,12,0.04), 0 10px 30px -14px rgba(74,14,12,0.16)',
+              lift: '0 2px 4px rgba(74,14,12,0.05), 0 24px 48px -20px rgba(74,14,12,0.22)',
+            },
+            letterSpacing: {
+              label: '0.18em',
             }
           }
         }
       }
     </script>
     <style>
+      html { scroll-behavior: smooth; }
       body {
-        font-family: 'Inter', 'Noto Sans Telugu', 'Noto Sans Devanagari', sans-serif;
+        font-family: 'Outfit', 'Noto Sans Telugu', 'Noto Sans Devanagari', sans-serif;
         background-color: #FEF9F0;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
-      .hero-circle {
-        background: radial-gradient(circle, #FCE7DB 0%, rgba(252, 231, 219, 0) 70%);
+      .tnum { font-variant-numeric: tabular-nums; }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to   { opacity: 1; }
       }
-      @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
+      @keyframes fade-in-up {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
       }
-      .animate-float {
-        animation: float 4s ease-in-out infinite;
+      @keyframes scale-up {
+        from { opacity: 0; transform: scale(0.96) translateY(8px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .animate-fade-in { animation: fade-in 0.5s ease both; }
+      .animate-fade-in-up { animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      .animate-scale-up { animation: scale-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .animate-fade-in, .animate-fade-in-up, .animate-scale-up { animation: none; }
       }
     </style>
   <script type="importmap">
@@ -58,7 +94,8 @@
 }
 </script>
 </head>
-  <body class="text-slate-900">
+  <body class="text-ink-700">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-4 focus:left-4 focus:bg-brand-brown focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

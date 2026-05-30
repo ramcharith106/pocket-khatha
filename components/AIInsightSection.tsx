@@ -8,14 +8,28 @@ interface AIInsightSectionProps {
   t: any;
 }
 
+const ledger = [
+  { name: "Sharma Kirana", area: "Kukatpally", amount: "4,820", status: "Agent Dispatched", tone: "red" },
+  { name: "Mehta Medical", area: "Madhapur", amount: "12,150", status: "Recovered", tone: "green" },
+  { name: "Patel Vegetables", area: "Gachibowli", amount: "7,300", status: "Nudge Sent", tone: "amber" },
+];
+
+const toneDot: Record<string, string> = {
+  amber: "bg-brand-gold",
+  green: "bg-emerald-500",
+  red: "bg-brand-red",
+};
+
 const AIInsightSection: React.FC<AIInsightSectionProps> = ({ locale, t }) => {
   const [query, setQuery] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleAnalyticRequest = async () => {
-    if (!query) return;
+    if (!query.trim()) return;
     setLoading(true);
+    setIsError(false);
     setResponse('');
 
     try {
@@ -25,84 +39,98 @@ const AIInsightSection: React.FC<AIInsightSectionProps> = ({ locale, t }) => {
       Give a concise, professional, and actionable tip in 2-3 sentences.
       Focus on Hyderabad retail context. Use terms like 'Khata', 'Udhaar', 'Kirana', and 'Sharma ji' naturally.
       The current user language preference is ${locale}. Please respond in ${locale}.`;
-      
+
       const result = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: prompt,
       });
 
-      setResponse(result.text || 'Unable to generate insight at this time.');
+      setResponse(result.text || 'No insight was returned. Please rephrase your question and try again.');
     } catch (error) {
       console.error(error);
-      setResponse("Our AI advisor is currently analyzing markets. Please try again soon.");
+      setIsError(true);
+      setResponse("We couldn't reach the advisor right now. Please try again in a moment.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="ai-insights" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="ai-insights" className="py-24 lg:py-28 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-14 items-start">
           <div>
-            <h2 className="text-4xl font-extrabold text-brand-brown mb-6">
-              {t.aiTitle} <span className="text-brand-red">{t.aiSubtitle}</span>
-            </h2>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+            <span className="text-[11px] font-semibold uppercase tracking-label text-brand-red">{t.aiTitle} {t.aiSubtitle}</span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-brand-brown leading-tight tracking-[-0.01em] mb-5" style={{ textWrap: 'balance' as any }}>
               {t.aiDesc}
-            </p>
-            
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-brand-peach/50">
-              <label className="block text-sm font-bold text-slate-700 mb-2">{t.aiLabel}</label>
-              <div className="flex gap-2">
-                <input 
-                  type="text" 
+            </h2>
+
+            <div className="mt-8">
+              <label htmlFor="ai-query" className="block text-[13px] font-medium text-ink-700 mb-2.5">{t.aiLabel}</label>
+              <div className="flex flex-col sm:flex-row gap-2.5">
+                <input
+                  id="ai-query"
+                  type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder={t.aiPlaceholder} 
-                  className="flex-grow p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-red outline-none"
+                  onKeyDown={(e) => { if (e.key === 'Enter') handleAnalyticRequest(); }}
+                  placeholder={t.aiPlaceholder}
+                  className="flex-grow px-4 py-3 rounded-xl border border-ink-100 bg-brand-cream/40 text-brand-brown placeholder:text-ink-300 focus:border-brand-red/40 focus:ring-2 focus:ring-brand-red/15 outline-none transition-colors"
                 />
-                <button 
+                <button
                   onClick={handleAnalyticRequest}
                   disabled={loading}
-                  className="bg-brand-red text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-darkRed disabled:opacity-50 transition-colors"
+                  className="shrink-0 bg-brand-red text-white px-6 py-3 rounded-xl font-medium hover:bg-brand-darkRed disabled:opacity-50 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40 focus-visible:ring-offset-2"
                 >
-                  {loading ? '...' : t.aiButton}
+                  {t.aiButton}
                 </button>
               </div>
-              
-              {response && (
-                <div className="mt-4 p-4 bg-brand-red/5 rounded-lg border-l-4 border-brand-red animate-fade-in">
-                  <p className="text-brand-brown text-sm italic font-medium">"{response}"</p>
-                </div>
-              )}
+
+              <div aria-live="polite" className="min-h-[1px]">
+                {loading && (
+                  <div className="mt-5 p-5 rounded-xl bg-brand-peach/15 border border-ink-100 space-y-2.5 animate-fade-in" aria-hidden="true">
+                    <div className="h-3 rounded bg-ink-100 w-[92%]"></div>
+                    <div className="h-3 rounded bg-ink-100 w-[78%]"></div>
+                    <div className="h-3 rounded bg-ink-100 w-[55%]"></div>
+                  </div>
+                )}
+                {!loading && response && (
+                  <div className={`mt-5 p-5 rounded-xl border-l-2 animate-fade-in ${isError ? 'bg-brand-red/5 border-brand-red' : 'bg-brand-peach/15 border-brand-gold'}`}>
+                    <p className={`text-[15px] leading-relaxed ${isError ? 'text-brand-darkRed font-medium' : 'text-brand-brown'}`}>{response}</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-          
-          <div className="relative">
-            <div className="absolute -inset-4 bg-brand-gold/20 rounded-full blur-3xl"></div>
-            <div className="relative bg-white p-8 rounded-3xl shadow-2xl border border-brand-peach/30">
-              <div className="flex justify-between items-center mb-6">
-                <h4 className="font-bold text-brand-brown">Live Khata Graph</h4>
-                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold uppercase tracking-tight">System Healthy</span>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { name: "Sharma Kirana", area: "Kukatpally", status: "Agent Dispatched", color: "red" },
-                  { name: "Mehta Medical", area: "Madhapur", status: "Recovered", color: "green" },
-                  { name: "Patel Vegetables", area: "Gachibowli", status: "Nudge Sent", color: "amber" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl border border-transparent hover:border-brand-peach/20 transition-all">
-                    <div>
-                      <div className="font-bold text-slate-900">{item.name}</div>
-                      <div className="text-xs text-slate-500">{item.area}</div>
-                    </div>
-                    <span className={`text-xs font-bold ${item.color === 'red' ? 'text-brand-red bg-brand-red/10' : item.color === 'green' ? 'text-green-700 bg-green-50' : 'text-amber-700 bg-amber-50'} px-3 py-1 rounded-full`}>
+
+          <div className="rounded-2xl bg-white border border-ink-100 shadow-soft overflow-hidden">
+            <div className="flex justify-between items-center px-6 py-4 border-b border-ink-100">
+              <h3 className="text-sm font-semibold text-brand-brown">Live Khata Graph</h3>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-emerald-700">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Synced
+              </span>
+            </div>
+            <ul className="divide-y divide-ink-100">
+              {ledger.map((item, i) => (
+                <li key={i} className="flex items-center justify-between px-6 py-4 hover:bg-brand-cream/40 transition-colors">
+                  <div className="min-w-0">
+                    <div className="font-medium text-brand-brown truncate">{item.name}</div>
+                    <div className="text-[13px] text-ink-500">{item.area}</div>
+                  </div>
+                  <div className="flex items-center gap-5 pl-4">
+                    <span className="tnum font-medium text-brand-brown">₹{item.amount}</span>
+                    <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-ink-500 whitespace-nowrap w-[112px] justify-end">
+                      <span className={`w-1.5 h-1.5 rounded-full ${toneDot[item.tone]}`}></span>
                       {item.status}
                     </span>
                   </div>
-                ))}
-              </div>
+                </li>
+              ))}
+            </ul>
+            <div className="px-6 py-4 border-t border-ink-100 flex items-center justify-between text-[13px]">
+              <span className="text-ink-500">Outstanding this week</span>
+              <span className="tnum font-semibold text-brand-brown">₹24,270</span>
             </div>
           </div>
         </div>
